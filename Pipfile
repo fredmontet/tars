@@ -16,7 +16,10 @@ pykrakenapi = "*"
 krakenex = "*"
 matplotlib = "*"
 torch = "*"
-torchvision = "*"
+darts = "*"
+fbprophet = "*"
+holidays = "*"
+seaborn = "*"
 
 [dev-packages]
 jupyterlab = "*"
