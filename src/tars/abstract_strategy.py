@@ -3,17 +3,17 @@ from abc import ABC, abstractmethod
 
 class AbstractStrategy(ABC):
     
-    def __init__(market, trader, portfolio):
+    def __init__(self, market, trader, portfolio):
         self.market = market
         self.trader = trader
         self.portfolio = portfolio
         
     @abstractmethod
-    def start():
+    def start(self):
         pass
     
     @abstractmethod
-    def stop():
+    def stop(self):
         pass
     
     
