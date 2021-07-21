@@ -23,7 +23,3 @@ class TARS:
     def load(self, strategy):
         """ Load a strategy to execute """
         self.strategy = strategy
-        
-        
-    
-    

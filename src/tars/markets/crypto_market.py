@@ -1,7 +1,9 @@
+from .abstract_market import AbstractMarket
 import krakenex
 from pykrakenapi import KrakenAPI
 
-class Market:
+
+class CryptoMarket(AbstractMarket):
     """
     https://docs.kraken.com/rest/#tag/Market-Data
     """
@@ -30,7 +32,3 @@ class Market:
     
     def get_recent_spread_data(self, pair, since=None, ascending=False):
         return self.api.get_recent_spread_data(pair, since, ascending)
-    
-    
-        
-        

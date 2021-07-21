@@ -15,5 +15,3 @@ class AbstractStrategy(ABC):
     @abstractmethod
     def stop(self):
         pass
-    
-    

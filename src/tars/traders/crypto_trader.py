@@ -1,9 +1,10 @@
+from src.tars.traders.abstract_trader import AbstractTrader
 import logging
 import krakenex
 from pykrakenapi import KrakenAPI
 
 
-class Trader:
+class CryptoTrader(AbstractTrader):
     """
     https://docs.kraken.com/rest/#tag/User-Trading
     """
@@ -19,10 +20,10 @@ class Trader:
             self.live = False
             logging.warning('Live mode : off')
 
-    def add_standard_order(self, *args, **kwargs):
+    def add_order(self, *args, **kwargs):
         return self.api.add_standard_order(args, kwargs)
     
-    def cancel_open_order(self, txid, otp=None):
+    def cancel_order(self, txid, otp=None):
         return self.api.cancel_open_order(txid, otp)
         
     def get_open_orders(self, trades=False, userref=None, otp=None):

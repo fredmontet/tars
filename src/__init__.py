@@ -1,5 +1,5 @@
 from src.tars.tars import TARS
-from src.tars.market import Market
-from src.tars.portfolio import Portfolio
-from src.tars.trader import Trader
-from src.tars import models
+from src.tars.markets.crypto_market import CryptoMarket
+from src.tars.traders.crypto_trader import CryptoTrader
+from src.tars.portfolios.crypto_portfolio import CryptoPortfolio
+
