@@ -1,7 +1,9 @@
 import krakenex
 from pykrakenapi import KrakenAPI
+from .abstract_portfolio import AbstractPortfolio
 
-class CryptoPortfolio:
+
+class CryptoPortfolio(AbstractPortfolio):
     
     def __init__(self, api_key):
         api = krakenex.API()
@@ -13,3 +15,5 @@ class CryptoPortfolio:
     
     def get_trade_balance(self, aclass='currency', asset='CHF', otp=None):
         return self.api.get_trade_balance(aclass, asset, otp)
+
+
