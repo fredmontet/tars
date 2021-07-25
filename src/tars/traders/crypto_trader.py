@@ -1,5 +1,4 @@
 from src.tars.traders.abstract_trader import AbstractTrader
-import logging
 import krakenex
 from pykrakenapi import KrakenAPI
 
@@ -10,16 +9,10 @@ class CryptoTrader(AbstractTrader):
     """
     
     def __init__(self, api_key=None):
-        if api_key is not None:
-            logging.warning('Live mode : on')
-            self.live = True
-            api = krakenex.API()
-            api.load_key(api_key)
-            self.api = KrakenAPI(api)
-        else:
-            self.live = False
-            logging.warning('Live mode : off')
-
+        api = krakenex.API()
+        api.load_key(api_key)
+        self.api = KrakenAPI(api)
+        
     def add_order(self, *args, **kwargs):
         return self.api.add_standard_order(args, kwargs)
     
