@@ -39,8 +39,8 @@ TARS
     - [x] add_order
     - [x] cancel_order
 
-- [ ] strategies
-  - [ ] buy'n'hold
-  - [ ] sequential investment
-  - [ ] random investement
+- [x] strategies
+  - [x] buy'n'hold
+  - [x] sequential investment
+  - [x] random investement
 

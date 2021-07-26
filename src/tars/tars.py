@@ -1,3 +1,6 @@
+from threading import Thread
+from .utils.runner import Runner
+
 
 class TARS:
     """
@@ -5,21 +8,28 @@ class TARS:
     """
 
     def __init__(self):
-        self.strategy = None
+        self.strategies = []
+        self.runners = []
         self.is_running = False
 
-    def start(self):
+    def start(self, frequency, duration=None):
         """ Start the trading bot """
-        if self.strategy is not None:
-            self.strategy.start()
+        if self.strategies :
+            for s in self.strategies:
+                runner = Runner()
+                self.runners.append(runner)
+                thread = Thread(target = runner.start, args =(s.run, frequency, duration))
+                thread.start()
             self.is_running = True
     
     def stop(self):
         """ Stop the trading bot """
-        if self.strategy is not None:
-            self.strategy.stop()
+        if self.runners :
+            for r in self.runners:
+                r.stop()
+                self.runners.remove(r)
             self.is_running = False
     
     def load(self, strategy):
         """ Load a strategy to execute """
-        self.strategy = strategy
+        self.strategies.append(strategy)
