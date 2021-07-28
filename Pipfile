@@ -20,6 +20,7 @@ darts = "*"
 fbprophet = "*"
 holidays = "*"
 seaborn = "*"
+scipy = "*"
 
 [dev-packages]
 jupyterlab = "*"

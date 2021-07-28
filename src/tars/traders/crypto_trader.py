@@ -1,4 +1,3 @@
-from src.tars import portfolios
 from src.tars.traders.abstract_trader import AbstractTrader
 import krakenex
 from pykrakenapi import KrakenAPI

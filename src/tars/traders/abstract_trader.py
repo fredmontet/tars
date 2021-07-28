@@ -10,3 +10,7 @@ class AbstractTrader(ABC):
     @abstractmethod
     def cancel_order(self, *args, **kwargs):
         pass
+
+    @abstractmethod
+    def get_trades_history(self, *args, **kwargs):
+        pass

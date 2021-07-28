@@ -1,4 +1,3 @@
-from collections import namedtuple
 from src.tars.utils.metrics import total_net_profit, profit_factor, average_trade_net_profit
 import pandas as pd
 
