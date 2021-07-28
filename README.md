@@ -1,6 +1,7 @@
 TARS
 ====
 
+https://www.investopedia.com/articles/fundamental-analysis/10/strategy-performance-reports.asp
 
 - [x] markets 
   - [x] abstract_market
@@ -43,4 +44,20 @@ TARS
   - [x] buy'n'hold
   - [x] sequential investment
   - [x] random investement
+  - [ ] ensemble strategy
+  - [ ] RL Strategy
+  - [ ] Prediction based Strategy (with possibility to import 1 or more models)
+  - [ ] Trend following?
+
+- [x] tars
+  - [x] add runner to execute strategies
+  - [x] add basic functions to start and stop the bot
+
+- [ ] Miscellaneous
+  - [x] Add fees to virtual trader orders
+  - [x] Make resulting table
+  - [x] Make plot to follow the evolution of strategies
+  - [x] Test on real crypto
+  - [ ] Add logging messages
+  - [ ] backtesting strategy on e.g. past year
 

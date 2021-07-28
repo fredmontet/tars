@@ -1,3 +1,4 @@
+from src.tars import portfolios
 from src.tars.traders.abstract_trader import AbstractTrader
 import krakenex
 from pykrakenapi import KrakenAPI
@@ -8,13 +9,22 @@ class CryptoTrader(AbstractTrader):
     https://docs.kraken.com/rest/#tag/User-Trading
     """
     
-    def __init__(self, api_key=None):
+    def __init__(self, portfolio, api_key=None):
         api = krakenex.API()
         api.load_key(api_key)
         self.api = KrakenAPI(api)
+        self.portfolio = portfolio
         
-    def add_order(self, *args, **kwargs):
-        return self.api.add_standard_order(args, kwargs)
+    def add_order(self, pair, type, ordertype, volume, price=None,
+                        price2=None, leverage=None, oflags=None, starttm=0,
+                        expiretm=0, userref=None, validate=True,
+                        close_ordertype=None, close_price=None,
+                        close_price2=None, otp=None,
+                        trading_agreement='agree'):
+        return self.api.add_standard_order(pair, type, ordertype, volume, price,
+                        price2, leverage, oflags, starttm, expiretm, userref, 
+                        validate, close_ordertype, close_price, close_price2, 
+                        otp, trading_agreement)
     
     def cancel_order(self, txid, otp=None):
         return self.api.cancel_open_order(txid, otp)

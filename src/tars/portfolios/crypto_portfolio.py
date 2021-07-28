@@ -13,7 +13,7 @@ class CryptoPortfolio(AbstractPortfolio):
     def get_account_balance(self, otp=None):
         return self.api.get_account_balance(otp)
     
-    def get_trade_balance(self, aclass='currency', asset='CHF', otp=None):
+    def get_trade_balance(self, aclass='currency', asset='ZUSD', otp=None):
         return self.api.get_trade_balance(aclass, asset, otp)
 
 
