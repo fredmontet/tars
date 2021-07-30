@@ -16,7 +16,7 @@ class RandomInvestment(AbstractStrategy):
     def run(self):
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
-        self.evaluator.add_checkpoint(pd.Timestamp.now(), balance)
+        self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
         # Run strategy
         order_type = ['buy', 'sell'][random.getrandbits(1)]        
         self.trader.add_order(self.pair, order_type, self.amount)

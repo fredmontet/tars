@@ -20,7 +20,7 @@ class SequentialInvestment(AbstractStrategy):
     def run(self):
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
-        self.evaluator.add_checkpoint(pd.Timestamp.now(), balance)
+        self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
         # Run strategy
         if self.has_run == False:
             step_volume = self.volume / self.n_step
