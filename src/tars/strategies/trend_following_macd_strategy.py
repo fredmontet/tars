@@ -35,7 +35,7 @@ class TrendFollowingMACD(AbstractStrategy):
             self.trader.add_order(pair=self.pair, type='buy',
                                   ordertype='market', volume=self.volume,
                                   validate=self.validate)
-        elif line >= signal:
+        elif signal >= line:
             self.trader.add_order(pair=self.pair, type='sell',
                                   ordertype='market', volume=self.volume,
                                   validate=self.validate)

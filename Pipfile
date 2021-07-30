@@ -21,6 +21,7 @@ holidays = "*"
 seaborn = "*"
 scipy = "*"
 ta = "*"
+python-telegram-bot = "*"
 
 [dev-packages]
 jupyterlab = "*"
