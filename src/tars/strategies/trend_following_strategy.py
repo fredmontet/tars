@@ -22,7 +22,7 @@ class TrendFollowing(AbstractStrategy):
         self.evaluator.add_checkpoint(pd.Timestamp.now(), balance)
 
         # Run strategy
-        
+
         ## parameters
         n = 10
         r = 60

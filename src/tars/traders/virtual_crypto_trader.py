@@ -36,8 +36,11 @@ class VirtualCryptoTrader(AbstractTrader):
             try: 
                 available_quote = self.portfolio.get_account_balance().loc[quote].vol # USD
                 if cost <= available_quote:
-                    self.portfolio.withdraw(quote, cost + fee) # - USD
-                    self.portfolio.deposit(base, volume) # + ETH
+                    try:
+                        self.portfolio.withdraw(quote, cost + fee)  # - USD
+                        self.portfolio.deposit(base, volume)  # + ETH
+                    except Exception:
+                        pass
             except KeyError:
                 logging.error(f'The quote {quote} isn\'t available in the portfolio.')
             except Exception:
@@ -47,8 +50,11 @@ class VirtualCryptoTrader(AbstractTrader):
             try: 
                 max_volume = self.portfolio.get_account_balance().loc[base].vol # ETH
                 if volume <= max_volume:
-                    self.portfolio.withdraw(base, volume) # - ETH
-                    self.portfolio.deposit(quote, cost - fee) # + USD
+                    try:
+                        self.portfolio.withdraw(base, volume)  # - ETH
+                        self.portfolio.deposit(quote, cost - fee)  # + USD
+                    except Exception:
+                        pass
             except KeyError:
                 logging.error(f'The base {base} isn\'t available in the portfolio.')
             except Exception:
