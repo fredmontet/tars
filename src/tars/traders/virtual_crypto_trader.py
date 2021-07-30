@@ -21,7 +21,7 @@ class VirtualCryptoTrader(AbstractTrader):
         market = CryptoMarket()
 
         # 1. Caculate order informations
-        dtime = pd.Timestamp.now()
+        dtime = pd.Timestamp.utcnow()
         price = float(market.get_ticker_information(pair)['c'][0][0])
         sleep(1)
         fee_in_percent = market.get_tradable_asset_pairs(info='fees').loc['XETHZUSD']['fees'][0][1] / 100
@@ -93,7 +93,7 @@ class VirtualCryptoTrader(AbstractTrader):
     def get_trades_history(self):
         df = pd.DataFrame.from_dict(self.order_book, orient='index')
         df.reset_index(inplace=True)
-        df =    df.rename(columns={'index':'ordertxid'})
+        df = df.rename(columns={'index':'ordertxid'})
         df = df.set_index('dtime')
         return df, len(df)
 
