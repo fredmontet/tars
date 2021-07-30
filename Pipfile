@@ -21,6 +21,7 @@ fbprophet = "*"
 holidays = "*"
 seaborn = "*"
 scipy = "*"
+ta = "*"
 
 [dev-packages]
 jupyterlab = "*"
