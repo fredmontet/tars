@@ -1,4 +1,3 @@
-from typing import ForwardRef
 from pandas import Timestamp, Timedelta
 from time import sleep
 

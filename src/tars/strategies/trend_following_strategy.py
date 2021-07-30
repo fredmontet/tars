@@ -38,8 +38,8 @@ class TrendFollowing(AbstractStrategy):
 
         ## set thresholds
         dx = df2.iloc[-1][0]
-        pos_lim = 0.5
-        neg_lim = -0.5
+        pos_lim = 0.9
+        neg_lim = -0.9
 
         ## trading rules
         if dx <= neg_lim:
