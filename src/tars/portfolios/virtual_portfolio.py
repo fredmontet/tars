@@ -53,5 +53,6 @@ class VirtualPortfolio(AbstractPortfolio):
                     del self.account[name]
             else:
                 logging.error(f'The amount to remove from the portfolio exceeds its content.')
+                raise Exception("Unsufficient amount in portfolio.")
         except KeyError:
             logging.error(f'The key {name} isn\'t in the portfolio')
