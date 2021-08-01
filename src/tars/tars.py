@@ -13,8 +13,14 @@ class TARS:
         self.is_running = False
 
     def start(self, frequency, duration=None):
-        """ Start the trading bot """
-        if self.strategies :
+        """
+        Start a trading session
+
+        :param frequency: Timestamp or
+        :param duration:
+        :return:
+        """
+        if self.strategies:
             for s in self.strategies:
                 runner = Runner()
                 self.runners.append(runner)
@@ -24,7 +30,7 @@ class TARS:
     
     def stop(self):
         """ Stop the trading bot """
-        if self.runners :
+        if self.runners:
             for r in self.runners:
                 r.stop()
                 self.runners.remove(r)

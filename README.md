@@ -44,10 +44,11 @@ https://www.investopedia.com/articles/fundamental-analysis/10/strategy-performan
   - [x] buy'n'hold
   - [x] sequential investment
   - [x] random investement
+  - [x] Trend following?  
   - [ ] ensemble strategy
   - [ ] RL Strategy
   - [ ] Prediction based Strategy (with possibility to import 1 or more models)
-  - [ ] Trend following?
+  
 
 - [x] tars
   - [x] add runner to execute strategies

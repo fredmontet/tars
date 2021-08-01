@@ -21,9 +21,9 @@ class CryptoTrader(AbstractTrader):
                         close_price2=None, otp=None,
                         trading_agreement='agree'):
         return self.api.add_standard_order(pair, type, ordertype, volume, price,
-                        price2, leverage, oflags, starttm, expiretm, userref, 
-                        validate, close_ordertype, close_price, close_price2, 
-                        otp, trading_agreement)
+                            price2, leverage, oflags, starttm, expiretm, userref,
+                            validate, close_ordertype, close_price, close_price2,
+                            otp, trading_agreement)
     
     def cancel_order(self, txid, otp=None):
         return self.api.cancel_open_order(txid, otp)
