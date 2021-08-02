@@ -1,19 +1,40 @@
 import logging
+from typing import NoReturn
+
 import pandas as pd
+from pandas import DataFrame
+
 from ..markets import CryptoMarket
 from .abstract_portfolio import AbstractPortfolio
 
 
 class VirtualPortfolio(AbstractPortfolio):
+    """
+    VirtualPortfolio is a portfolio of virtual cryptocurrencies. It is made for
+    paper trading. It can be loaded virtually with any kind of amount.
 
-    def __init__(self, account):
+    :ivar account: Dict of cryptocurrency as key and amount as value.
+    """
+
+    def __init__(self, account: dict):
         self.account = account
 
-    def get_account_balance(self):
+    def get_account_balance(self) -> DataFrame:
+        """ Get asset names and balance amount.
+
+        :return: DataFrame
+        """
         return pd.DataFrame.from_dict(self.account, orient='index',
                                       columns=['vol']).round(2)
 
-    def get_trade_balance(self, asset='ZUSD'):
+    def get_trade_balance(self, asset: str = 'ZUSD') -> DataFrame:
+        """Get trade balance info.
+
+        :param asset:  str, optional (default='ZUSD')
+            Base asset used to determine balance.
+
+        :return: DataFrame
+        """
 
         # Get list of crypto assets
         quote = asset
@@ -39,20 +60,35 @@ class VirtualPortfolio(AbstractPortfolio):
 
         return pd.DataFrame.from_dict({'eb':[total]}, orient='index', columns=[quote]) 
 
-    def deposit(self, name, volume):
+    def deposit(self, name: str, volume: float) -> NoReturn:
+        """ Make a deposit in the account
+
+        :param name: str
+            The currency in which the deposit will be.
+        :param volume: float
+            The deposited amount
+        """
         if name in self.account:
             self.account[name] += volume
         else:
             self.account[name] = volume
     
-    def withdraw(self, name, volume):
+    def withdraw(self, name: str, volume: float) -> NoReturn:
+        """ Withdraw from the account
+
+        :param name: str
+            The currency in which the deposit will be.
+        :param volume: float
+            The deposited amount
+        """
         try:
             if self.account[name] >= volume:
                 self.account[name] -= volume
                 if self.account[name] == 0:
                     del self.account[name]
             else:
-                logging.error(f'The amount to remove from the portfolio exceeds its content.')
+                logging.error(f'The amount to remove from the portfolio '
+                              f'exceeds its content.')
                 raise Exception("Unsufficient amount in portfolio.")
         except KeyError:
             logging.error(f'The key {name} isn\'t in the portfolio')
