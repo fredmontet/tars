@@ -49,7 +49,6 @@ https://www.investopedia.com/articles/fundamental-analysis/10/strategy-performan
   - [ ] RL Strategy
   - [ ] Prediction based Strategy (with possibility to import 1 or more models)
   
-
 - [x] tars
   - [x] add runner to execute strategies
   - [x] add basic functions to start and stop the bot
@@ -59,6 +58,16 @@ https://www.investopedia.com/articles/fundamental-analysis/10/strategy-performan
   - [x] Make resulting table
   - [x] Make plot to follow the evolution of strategies
   - [x] Test on real crypto
+  - [ ] Add comments -> Only traders and strategies left
   - [ ] Add logging messages
-  - [ ] backtesting strategy on e.g. past year
+  - [ ] Make utils to get historical data
+  - [ ] Make strategy backtester
 
+- [ ] CLI and Telegram bot
+  Think a bit about the concept, how should the bot be accessible from outside ?
+  - [ ] Make CLI and try on a server
+    - start
+    - stop
+    - send information
+  - [ ] Make Telegram bot using CLI
+    

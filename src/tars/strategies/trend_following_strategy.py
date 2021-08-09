@@ -17,6 +17,7 @@ class TrendFollowing(AbstractStrategy):
         self.market = CryptoMarket()
 
     def run(self):
+        """ Run the strategy """
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
         self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
