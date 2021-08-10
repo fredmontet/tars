@@ -22,6 +22,7 @@ class RandomInvestment(AbstractStrategy):
     """
     
     def __init__(self, trader, pair, volume, validate=True):
+        self.name = 'Random Investment'
         self.trader = trader
         self.pair = pair
         self.volume = volume

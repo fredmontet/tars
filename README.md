@@ -60,6 +60,7 @@ https://www.investopedia.com/articles/fundamental-analysis/10/strategy-performan
   - [x] Test on real crypto
   - [x] Add comments -> Only traders and strategies left
   - [ ] Add logging messages
+        - 
   - [ ] Make utils to get historical data
   - [ ] Make strategy backtester
 

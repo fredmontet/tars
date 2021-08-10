@@ -32,6 +32,7 @@ class SequentialInvestment(AbstractStrategy):
     """
     
     def __init__(self, trader, pair, volume, n_step, duration, validate=True):
+        self.name = 'Sequential Investment'
         self.trader = trader
         self.pair = pair
         self.volume = volume

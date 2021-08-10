@@ -27,6 +27,7 @@ class BuyAndHold(AbstractStrategy):
     """
 
     def __init__(self, trader, pair, volume, validate=True):
+        self.name = 'Buy and hold'
         self.trader = trader
         self.pair = pair
         self.volume = volume
