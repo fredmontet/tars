@@ -12,6 +12,7 @@ class CryptoPortfolio(AbstractPortfolio):
 
     :param api_key: str
         The API key from Kraken
+
     :ivar api: KrakenAPI object
     """
 

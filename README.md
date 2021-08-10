@@ -58,7 +58,7 @@ https://www.investopedia.com/articles/fundamental-analysis/10/strategy-performan
   - [x] Make resulting table
   - [x] Make plot to follow the evolution of strategies
   - [x] Test on real crypto
-  - [ ] Add comments -> Only traders and strategies left
+  - [x] Add comments -> Only traders and strategies left
   - [ ] Add logging messages
   - [ ] Make utils to get historical data
   - [ ] Make strategy backtester
