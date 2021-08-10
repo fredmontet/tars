@@ -30,7 +30,7 @@ class VirtualCryptoTrader(AbstractTrader):
         self.portfolio = portfolio
         self.order_book = {}
 
-    def add_order(self, pair: str, type: str, ordertype: str, volume: float) \
+    def add_order(self, pair: str, type: str, ordertype: str, volume: float, validate) \
             -> VirtualOrder:
         """ Add a virtual standard order.
 
