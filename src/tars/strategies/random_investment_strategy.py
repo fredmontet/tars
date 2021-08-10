@@ -21,19 +21,20 @@ class RandomInvestment(AbstractStrategy):
         Evaluator allows for the evaluation of a strategy
     """
     
-    def __init__(self, trader, pair, volume):
+    def __init__(self, trader, pair, volume, validate=True):
         self.trader = trader
         self.pair = pair
         self.volume = volume
         self.evaluator = TraderEvaluator(self.trader)
+        self.validate = validate
 
-        
     def run(self):
         """ Run the strategy """
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
         self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
         # Run strategy
-        order_type = ['buy', 'sell'][random.getrandbits(1)]        
-        self.trader.add_order(self.pair, order_type, self.volume)
-        
+        type = ['buy', 'sell'][random.getrandbits(1)]
+        self.trader.add_order(pair=self.pair, type=type,
+                              ordertype='market', volume=self.volume,
+                              validate=self.validate)

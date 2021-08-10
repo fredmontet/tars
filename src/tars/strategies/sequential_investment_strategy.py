@@ -52,7 +52,9 @@ class SequentialInvestment(AbstractStrategy):
             step_volume = self.volume / self.n_step
             step_duration = self.duration / self.n_step
             for step in range(self.n_step):
-                self.trader.add_order(pair=self.pair, type='buy', ordertype='market', volume=step_volume, validate=self.validate)
+                self.trader.add_order(pair=self.pair, type='buy',
+                                      ordertype='market', volume=step_volume,
+                                      validate=self.validate)
                 self.current_step += 1
                 time.sleep(step_duration.total_seconds())
             self.has_run = True

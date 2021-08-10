@@ -41,5 +41,7 @@ class BuyAndHold(AbstractStrategy):
         self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
         # Run strategy
         if not self.has_run:
-            self.trader.add_order(pair=self.pair, type='buy', ordertype='market', volume=self.volume, validate=self.validate)
+            self.trader.add_order(pair=self.pair, type='buy',
+                                  ordertype='market', volume=self.volume,
+                                  validate=self.validate)
             self.has_run = True
