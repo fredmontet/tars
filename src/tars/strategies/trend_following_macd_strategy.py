@@ -7,7 +7,26 @@ from src.tars.markets.crypto_market import CryptoMarket
 
 
 class TrendFollowingMACD(AbstractStrategy):
-    
+    """
+    Follow the moving average convergence divergence (MACD) index is the goal
+    of this strategy. When the signal line is below the MACD line it sells, when
+    it is the opposite, it buys.
+
+    :param trader: Trader
+        The Trader handling a portfolio
+    :param pair: str
+        The pair e.g. XETHZUSD to buy and hold
+    :param volume: float
+        The volume of the pair's quote buy
+    :param validate: boolean
+        Safety Boolean to make sure not to trade real money by default
+
+    :ivar evaluator: AbstractEvaluator
+        Evaluator allows for the evaluation of a strategy
+    :ivar market: AbstractMarket
+        Market object to get information from
+    """
+
     def __init__(self, trader, pair, volume, validate=True):
         self.trader = trader
         self.pair = pair

@@ -7,6 +7,27 @@ from src.tars.markets.crypto_market import CryptoMarket
 
 
 class TrendFollowing(AbstractStrategy):
+    """
+    Follow a quote's trend by taking a buy/sell decision based on the 2nd
+    derivative of a Savinsky-Golay filtered signal. i.e. :
+
+        sell if dx < negative limit
+        buy  if dx > positive limit
+
+    :param trader: Trader
+        The Trader handling a portfolio
+    :param pair: str
+        The pair e.g. XETHZUSD to buy and hold
+    :param volume: float
+        The volume of the pair's quote buy
+    :param validate: boolean
+        Safety Boolean to make sure not to trade real money by default
+
+    :ivar evaluator: AbstractEvaluator
+        Evaluator allows for the evaluation of a strategy
+    :ivar market: AbstractMarket
+        Market object to get information from
+    """
     
     def __init__(self, trader, pair, volume, validate=True):
         self.trader = trader

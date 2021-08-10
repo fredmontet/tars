@@ -5,6 +5,7 @@ from pykrakenapi import KrakenAPI
 
 class CryptoTrader(AbstractTrader):
     """
+
     https://docs.kraken.com/rest/#tag/User-Trading
     """
     

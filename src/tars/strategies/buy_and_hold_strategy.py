@@ -22,7 +22,7 @@ class BuyAndHold(AbstractStrategy):
 
     :ivar has_run: boolean
         Boolean describing if the strategy has run or not yet.
-    :ivar evaluator: Evaluator
+    :ivar evaluator: AbstractEvaluator
         Evaluator allows for the evaluation of a strategy
     """
 
