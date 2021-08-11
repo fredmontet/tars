@@ -1,74 +1,55 @@
-TARS
+
+Tars
 ====
 
-https://www.investopedia.com/articles/fundamental-analysis/10/strategy-performance-reports.asp
+Welcome to the repository of Tars; a small trading bot made for research 
+purposes. If you do invest with it, make it with care. ;-)
 
-- [x] markets 
-  - [x] abstract_market
-  - [x] crypto_market
-    - [x] get_asset_info
-    - [x] get_ohlc_data
-    - [x] get_order_book
-    - [x] get_recent_spread_data
-    - [x] get_ticker_information
-    - [x] get_tradable_asset_pair
+Prerequisites
+-------------
 
-- [x] portfolios
-  - [x] abstract_portfolio 
-    - [x] get_account_balace
-  - [x] crypto_portfolio
-    - [x] get_account_balance
-    - [x] get_trade_balance
-  - [x] virtual_portfolio
-    - [x] get_account_balance
-    - [x] deposit
-    - [x] withdraw
+The code is structured following the Cookiecutter data science template. Visit 
+https://drivendata.github.io/cookiecutter-data-science/ to become familiar with 
+it.
 
-- [x] traders 
-  - [x] abstract_trader
-    - [x] add_order
-    - [x] cancel_order
-  - [x] virtual_crypto_trader
-    - [x] add_order
-    - [x] cancel_order
-    - [x] get_open_orders
-    - [x] get_closed_orders
-    - [x] query_orders_info
-    - [x] get_trades_history
-    - [x] query_trades_info
-  - [X] virtual_trader
-    - [x] add_order
-    - [x] cancel_order
+Dependencies are managed with `pipenv`, install it following the informations
+available on https://pipenv.pypa.io/en/latest/.
 
-- [x] strategies
-  - [x] buy'n'hold
-  - [x] sequential investment
-  - [x] random investement
-  - [x] Trend following?  
-  - [ ] ensemble strategy
-  - [ ] RL Strategy
-  - [ ] Prediction based Strategy (with possibility to import 1 or more models)
-  
-- [x] tars
-  - [x] add runner to execute strategies
-  - [x] add basic functions to start and stop the bot
+Getting Started
+---------------
 
-- [ ] Miscellaneous
-  - [x] Add fees to virtual trader orders
-  - [x] Make resulting table
-  - [x] Make plot to follow the evolution of strategies
-  - [x] Test on real crypto
-  - [x] Add comments -> Only traders and strategies left
-  - [ ] Add logging messages
-        - 
-  - [ ] Make utils to get historical data
-  - [ ] Make strategy backtester
+Once you installed the dependencies with 
 
-- [ ] CLI and Telegram bot
-  Think a bit about the concept, how should the bot be accessible from outside ?
-  - [ ] Make CLI and try on a server
-    - start
-    - stop
-    - send information
-  - [ ] Make Telegram bot using CLI
-    
+    pipenv install
+
+Go and check the getting started notebook in 
+
+    notebook/getting-started.ipynb
+
+and try to run it. If it does not work, it's probably because of the 
+dependencies. In this case, you can try to install Tars with `pip` with
+
+    pip install -r requirements.txt
+
+Once it works, take a visit in the notebooks for off/on-line testing:
+
+    notebooks/offline-testing.ipynb
+    notebooks/online-testing.ipynb
+
+Have fun
+
+More information
+----------------
+
+Go and check the code base in `src/tars`. It has many comments helping 
+developers like you.
+
+Contribute
+----------
+
+Contributions are always welcome, just take an issue and submit pull requests.
+
+Licence
+-------
+
+MIT
