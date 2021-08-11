@@ -22,7 +22,11 @@ Once you installed the dependencies with
 
     pipenv install
 
-Go and check the getting started notebook in 
+start your Jupyter Lab with
+
+    jupyter lab
+
+and check the getting started notebook in 
 
     notebook/getting-started.ipynb
 
@@ -36,7 +40,7 @@ Once it works, take a visit in the notebooks for off/on-line testing:
     notebooks/offline-testing.ipynb
     notebooks/online-testing.ipynb
 
-Have fun
+Have fun!
 
 More information
 ----------------
