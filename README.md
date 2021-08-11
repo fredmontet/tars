@@ -28,17 +28,14 @@ start your Jupyter Lab with
 
 and check the getting started notebook in 
 
-    notebook/getting-started.ipynb
+    notebooks/getting-started.ipynb
 
 and try to run it. If it does not work, it's probably because of the 
 dependencies. In this case, you can try to install Tars with `pip` with
 
     pip install -r requirements.txt
 
-Once it works, take a visit in the notebooks for off/on-line testing:
-
-    notebooks/offline-testing.ipynb
-    notebooks/online-testing.ipynb
+Once it works, take a visit in the `notebooks/tutorials`folder for more.
 
 Have fun!
 
