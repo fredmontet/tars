@@ -22,6 +22,7 @@ seaborn = "*"
 scipy = "*"
 ta = "*"
 python-telegram-bot = "*"
+polygon-api-client = "*"
 
 [dev-packages]
 jupyterlab = "*"
