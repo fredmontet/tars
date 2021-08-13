@@ -42,7 +42,8 @@ class CryptoMarket(AbstractMarket):
 
         :return ohlc: Tuple[DataFrame, int]
         """
-        return self.api.get_ohlc_data(pair)
+        return self.api.get_ohlc_data(pair=pair, interval=interval, since=since,
+                                      ascending=ascending)
     
     def get_asset_info(self, info=None, aclass: str = None, asset: str = None) \
             -> DataFrame:

@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-src = {editable = true, path = "."}
 click = "*"
 coverage = "*"
 awscli = "*"
@@ -23,6 +22,7 @@ scipy = "*"
 ta = "*"
 python-telegram-bot = "*"
 polygon-api-client = "*"
+prophet = "*"
 
 [dev-packages]
 jupyterlab = "*"
