@@ -9,7 +9,7 @@ from src.tars.markets.crypto_market import CryptoMarket
 
 class PredictionStrategy(AbstractStrategy):
     """
-    Koker Strategy
+    Prediction Strategy
 
     :param trader: Trader
         The Trader handling a portfolio
