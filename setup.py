@@ -1,10 +1,20 @@
+from pathlib import Path
 from setuptools import find_packages, setup
 
+
+def read_requirements(path):
+    return list(Path(path).read_text().splitlines())
+
+
 setup(
-    name='src',
+    name='tars',
     packages=find_packages(),
     version='0.1.0',
-    description='A short description of the project.',
+    description='A cryptocurrency trading bot for research',
     author='Fred Montet',
     license='MIT',
+    package_dir={"": ""},
+    install_requires=[
+          read_requirements("requirements.txt")
+    ],
 )

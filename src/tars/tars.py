@@ -6,10 +6,10 @@ import logging
 import pandas as pd
 from pandas import DataFrame
 
-from .utils.runner import Runner
+from utils.runner import Runner
 
 
-class TARS:
+class Tars:
     """
     A trading bot with a name inspired by the movie Interstellar
     """
@@ -124,4 +124,3 @@ class TARS:
                 self.runners.remove(r)
             self.is_running = False
             logging.info(f'{self._tars} : ✋ Stopped all strategies')
-

@@ -4,7 +4,7 @@ from typing import NoReturn
 import pandas as pd
 from pandas import DataFrame
 
-from ..markets import CryptoMarket
+from src.tars.markets import CryptoMarket
 from .abstract_portfolio import AbstractPortfolio
 
 

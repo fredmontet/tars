@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 #
 # tars documentation build configuration file, created by
 # sphinx-quickstart.

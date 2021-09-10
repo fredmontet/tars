@@ -1,5 +1,6 @@
 # Project Specific
 kraken.key
+requirements.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

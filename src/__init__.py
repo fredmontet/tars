@@ -1,4 +1,4 @@
-from src.tars.tars import TARS
+from src.tars.tars import Tars
 from src.tars import markets
 from src.tars import portfolios
 from src.tars import traders
