@@ -17,6 +17,7 @@ scipy = "*"
 ta = "*"
 python-telegram-bot = "*"
 prophet = "*"
+tars = "*"
 
 [dev-packages]
 jupyterlab = "*"

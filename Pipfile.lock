@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "264f4ee4c238ba2adaab7bb6621a43d6cee121c402a78c8f7ad570530ff09992"
+            "sha256": "c40aa2afc156e2767f2eae63ac92bccb96f8906c5da3696a5c362bceb0de0d88"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -28,7 +28,7 @@
                 "sha256:93aa393e9d6c54c5cd570ccadd8edad61ea0c4b9ea7a01409020c9aa019eb442",
                 "sha256:dd83cd4b5b460958838f6eb3000c660b1f9caf2a5b1de4264e941512f603258a"
             ],
-            "markers": "sys_platform == 'darwin'",
+            "markers": "sys_platform == 'darwin' and sys_platform == 'darwin'",
             "version": "==0.1.2"
         },
         "apscheduler": {
@@ -563,7 +563,7 @@
                 "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937",
                 "sha256:fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"
             ],
-            "markers": "sys_platform != 'win32'",
+            "markers": "sys_platform != 'win32' and sys_platform != 'win32'",
             "version": "==4.8.0"
         },
         "pickleshare": {
@@ -967,6 +967,14 @@
             "index": "pypi",
             "version": "==0.7.0"
         },
+        "tars": {
+            "hashes": [
+                "sha256:307da11a1c7575a3510e96d4f52d075d61b09d80100a589d7e7b35b615118733",
+                "sha256:c4aae9226506c06b5501fc2696da6e8440ad3a00e4e4d69480927a73744adce8"
+            ],
+            "index": "pypi",
+            "version": "==0.2.0"
+        },
         "tensorboard": {
             "hashes": [
                 "sha256:f7dac4cdfb52d14c9e3f74585ce2aaf8e6203620a864e51faf84988b09f7bbdb"
@@ -1179,7 +1187,7 @@
                 "sha256:93aa393e9d6c54c5cd570ccadd8edad61ea0c4b9ea7a01409020c9aa019eb442",
                 "sha256:dd83cd4b5b460958838f6eb3000c660b1f9caf2a5b1de4264e941512f603258a"
             ],
-            "markers": "sys_platform == 'darwin'",
+            "markers": "sys_platform == 'darwin' and sys_platform == 'darwin'",
             "version": "==0.1.2"
         },
         "argon2-cffi": {
@@ -1393,11 +1401,11 @@
         },
         "ipykernel": {
             "hashes": [
-                "sha256:0bf7a9563e5ff053049c95d18b1488f4307cf334e3381020a83983274295d625",
-                "sha256:72d62a362777ee91eb990b90e55bf4375621aac478a34bf49c0ed1f3ae64167f"
+                "sha256:a3f6c2dda2ecf63b37446808a70ed825fea04790779ca524889c596deae0def8",
+                "sha256:df3355e5eec23126bc89767a676c5f0abfc7f4c3497d118c592b83b316e8c0cd"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==6.4.0"
+            "version": "==6.4.1"
         },
         "ipython": {
             "hashes": [
@@ -1656,7 +1664,7 @@
                 "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937",
                 "sha256:fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"
             ],
-            "markers": "sys_platform != 'win32'",
+            "markers": "sys_platform != 'win32' and sys_platform != 'win32'",
             "version": "==4.8.0"
         },
         "pickleshare": {
