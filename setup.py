@@ -13,7 +13,7 @@ setup(
         exclude=['sample'],
     ),
     package_dir={'': 'src'},
-    version='0.3.0',
+    version='0.3.1',
     description='A cryptocurrency trading bot for research',
     author='Fred Montet',
     license='MIT',
