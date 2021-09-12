@@ -1,0 +1,15 @@
+# Include all files from source package
+recursive-include src *
+
+# Exclude Jupyter notebooks Checkpoints
+prune **/.ipynb_checkpoints
+
+# Remove cookiecutter template dirs and more
+recursive-exclude docs *
+recursive-exclude models *
+recursive-exclude notebooks *
+recursive-exclude references *
+recursive-exclude reports *
+recursive-exclude samples *
+
+exclude .gitignore Makefile Pipfile Pipfile.lock test_environment.py tox.ini

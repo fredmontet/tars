@@ -8,8 +8,12 @@ def read_requirements(path):
 
 setup(
     name='tars',
-    packages=['src.tars'],
-    version='0.2.0',
+    packages=find_packages(
+        where='src',
+        exclude=['sample'],
+    ),
+    package_dir={'': 'src'},
+    version='0.2.1',
     description='A cryptocurrency trading bot for research',
     author='Fred Montet',
     license='MIT',
