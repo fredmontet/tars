@@ -1,22 +1,14 @@
+# Dependency file to use only for development and
+# playing with the notebooks. If you want a Dependency
+# to be added to Tars, then add it to the requirements.txt
+# file.
+
 [[source]]
 url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
 [packages]
-click = "*"
-requests = "*"
-pykrakenapi = "*"
-krakenex = "*"
-matplotlib = "*"
-torch = "*"
-darts = "*"
-holidays = "*"
-seaborn = "*"
-scipy = "*"
-ta = "*"
-python-telegram-bot = "*"
-prophet = "*"
 tars = "*"
 
 [dev-packages]

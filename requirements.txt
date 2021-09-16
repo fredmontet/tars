@@ -1,0 +1,13 @@
+click
+requests
+pykrakenapi
+krakenex
+matplotlib
+python-telegram-bot
+prophet
+torch
+darts
+holidays
+seaborn
+scipy
+ta
