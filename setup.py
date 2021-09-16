@@ -17,4 +17,9 @@ setup(
     install_requires=[
           read_requirements("requirements.txt")
     ],
+    entry_points={
+        'console_scripts': [
+            'tars = tars.cli:cli',
+        ],
+    },
 )

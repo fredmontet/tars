@@ -1,4 +1,4 @@
-import portfolios, traders, strategies
+from tars import portfolios, traders, strategies
 
 
 def func():
