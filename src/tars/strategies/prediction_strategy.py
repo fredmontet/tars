@@ -2,9 +2,9 @@ import pandas as pd
 from darts import TimeSeries
 from darts.models import ExponentialSmoothing
 
-from src.tars.evaluators.trader_evaluator import TraderEvaluator
-from src.tars.strategies.abstract_strategy import AbstractStrategy
-from src.tars.markets.crypto_market import CryptoMarket
+from src.tars.tars import TraderEvaluator
+from src.tars.tars import AbstractStrategy
+from src.tars.tars import CryptoMarket
 
 
 class PredictionStrategy(AbstractStrategy):

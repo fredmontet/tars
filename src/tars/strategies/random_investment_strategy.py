@@ -1,8 +1,8 @@
 import random
 import pandas as pd
 
-from src.tars.evaluators.trader_evaluator import TraderEvaluator
-from src.tars.strategies.abstract_strategy import AbstractStrategy
+from src.tars.tars import TraderEvaluator
+from src.tars.tars import AbstractStrategy
 
 
 class RandomInvestment(AbstractStrategy):

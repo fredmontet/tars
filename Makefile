@@ -8,7 +8,7 @@ PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
 PROJECT_NAME = tars
-PYTHON_INTERPRETER = python3
+PYTHON_INTERPRETER = python
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -38,6 +38,18 @@ clean:
 ## Lint using flake8
 lint:
 	flake8 src
+
+## Build
+build:
+	$(PYTHON_INTERPRETER) setup.py sdist bdist_wheel
+
+## Test
+test:
+	twine check dist/*
+
+## Publish
+publish:
+	twine upload dist/*
 
 ## Upload Data to S3
 sync_data_to_s3:

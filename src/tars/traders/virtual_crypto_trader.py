@@ -7,8 +7,8 @@ from typing import NoReturn, Tuple
 import pandas as pd
 from pandas import DataFrame
 
-from src.tars.traders.abstract_trader import AbstractTrader
-from src.tars.markets.crypto_market import CryptoMarket
+from src.tars.tars import AbstractTrader
+from src.tars.tars import CryptoMarket
 
 
 VirtualOrder = namedtuple('VirtualOrder', ['dtime', 'pair', 'ordertype', 'type',

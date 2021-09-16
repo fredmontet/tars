@@ -2,7 +2,7 @@ from typing import Tuple
 
 from pandas import DataFrame
 
-from src.tars.traders.abstract_trader import AbstractTrader
+from src.tars.tars import AbstractTrader
 import krakenex
 from pykrakenapi import KrakenAPI
 

@@ -1,6 +1,6 @@
 from typing import Any, NoReturn
 from pandas import Timestamp, DataFrame
-from src.tars.utils.metrics import total_net_profit, profit_factor, average_trade_net_profit
+from src.tars.tars import total_net_profit, profit_factor, average_trade_net_profit
 
 
 class TraderEvaluator:

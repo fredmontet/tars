@@ -1,16 +1,18 @@
 import pandas as pd
-from ta.trend import MACD
+from scipy.signal import savgol_filter
 
-from src.tars.evaluators.trader_evaluator import TraderEvaluator
-from src.tars.strategies.abstract_strategy import AbstractStrategy
-from src.tars.markets.crypto_market import CryptoMarket
+from src.tars.tars import TraderEvaluator
+from src.tars.tars import AbstractStrategy
+from src.tars.tars import CryptoMarket
 
 
-class TrendFollowingMACD(AbstractStrategy):
+class TrendFollowing(AbstractStrategy):
     """
-    Follow the moving average convergence divergence (MACD) index is the goal
-    of this strategy. When the signal line is below the MACD line it sells, when
-    it is the opposite, it buys.
+    Follow a quote's trend by taking a buy/sell decision based on the 2nd
+    derivative of a Savinsky-Golay filtered signal. i.e. :
+
+        sell if dx < negative limit
+        buy  if dx > positive limit
 
     :param trader: Trader
         The Trader handling a portfolio
@@ -26,9 +28,9 @@ class TrendFollowingMACD(AbstractStrategy):
     :ivar market: AbstractMarket
         Market object to get information from
     """
-
+    
     def __init__(self, trader, pair, volume, validate=True):
-        self.name = 'Trend Following with MACD'
+        self.name = 'Trend Following with Differential Filter'
         self.trader = trader
         self.pair = pair
         self.volume = volume
@@ -44,20 +46,31 @@ class TrendFollowingMACD(AbstractStrategy):
 
         # Run strategy
 
+        ## parameters
+        n = 10
+        r = 60
+        w = 103
+        o = 4
+
         ## process data
         market = CryptoMarket()
         df0 = market.get_ohlc_data(pair=self.pair)[0]['close'].iloc[::-1]
+        df1 = df0.diff(n).diff(n).rolling(r).mean()
+        arr = savgol_filter(df1.to_numpy(), w, o)
+        df2 = pd.DataFrame(arr).set_index(df1.index)
 
-        macd = MACD(df0)
-        line = macd.macd()[-1]
-        signal = macd.macd_signal()[-1]
+        ## set thresholds
+        dx = df2.iloc[-1][0]
+        pos_lim = 0.9
+        neg_lim = -0.9
 
-        if signal < line:
-            self.trader.add_order(pair=self.pair, type='buy',
+        ## trading rules
+        if dx <= neg_lim:
+            self.trader.add_order(pair=self.pair, type='sell',
                                   ordertype='market', volume=self.volume,
                                   validate=self.validate)
-        elif signal >= line:
-            self.trader.add_order(pair=self.pair, type='sell',
+        elif dx >= pos_lim:
+            self.trader.add_order(pair=self.pair, type='buy',
                                   ordertype='market', volume=self.volume,
                                   validate=self.validate)
         else:
