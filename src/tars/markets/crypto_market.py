@@ -1,9 +1,10 @@
 from typing import Tuple
-from pandas import DataFrame
 
-from .abstract_market import AbstractMarket
+from pandas import DataFrame
 import krakenex
 from pykrakenapi import KrakenAPI
+
+from .abstract_market import AbstractMarket
 
 
 class CryptoMarket(AbstractMarket):

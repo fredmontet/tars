@@ -1,9 +1,12 @@
 from typing import Any, NoReturn
+
 from pandas import Timestamp, DataFrame
-from src.tars.tars import total_net_profit, profit_factor, average_trade_net_profit
+
+from .abstract_evaluator import AbstractEvaluator
+from ..utils.metrics import total_net_profit, profit_factor, average_trade_net_profit
 
 
-class TraderEvaluator:
+class TraderEvaluator(AbstractEvaluator):
     """
     Specialized Evaluator to follow a Trader object
 

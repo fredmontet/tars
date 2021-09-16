@@ -4,8 +4,8 @@ from typing import NoReturn
 import pandas as pd
 from pandas import DataFrame
 
-from src.tars.tars import CryptoMarket
 from .abstract_portfolio import AbstractPortfolio
+from ..markets import CryptoMarket
 
 
 class VirtualPortfolio(AbstractPortfolio):

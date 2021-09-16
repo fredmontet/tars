@@ -1,10 +1,10 @@
 from typing import Tuple
 
 from pandas import DataFrame
-
-from src.tars.tars import AbstractTrader
 import krakenex
 from pykrakenapi import KrakenAPI
+
+from .abstract_trader import AbstractTrader
 
 
 class CryptoTrader(AbstractTrader):

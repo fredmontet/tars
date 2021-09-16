@@ -1,8 +1,11 @@
 from typing import Any, NoReturn
+
 from pandas import Timestamp, DataFrame
 
+from .abstract_evaluator import AbstractEvaluator
 
-class BaseEvaluator:
+
+class BaseEvaluator(AbstractEvaluator):
     """
     The BaseEvaluator is the basic form of Evaluator. It stores data and
     output data.

@@ -2,8 +2,8 @@ from typing import NoReturn
 
 import pandas as pd
 
-from src.tars.tars import TraderEvaluator
-from src.tars.tars import AbstractStrategy
+from .abstract_strategy import AbstractStrategy
+from ..evaluators import TraderEvaluator
 
 
 class BuyAndHold(AbstractStrategy):

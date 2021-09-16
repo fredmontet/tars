@@ -1,7 +1,8 @@
-import click
 from importlib import import_module, util
 
-from tars import Tars
+import click
+
+from .tars import Tars
 
 
 @click.group()

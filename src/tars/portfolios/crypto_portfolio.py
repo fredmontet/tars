@@ -1,6 +1,7 @@
-import krakenex
 from pandas import DataFrame
+import krakenex
 from pykrakenapi import KrakenAPI
+
 from .abstract_portfolio import AbstractPortfolio
 
 

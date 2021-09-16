@@ -1,7 +1,8 @@
 import logging
 from typing import Callable, NoReturn
-from pandas import Timestamp, Timedelta
 from time import sleep
+
+from pandas import Timestamp, Timedelta
 
 
 class Runner:

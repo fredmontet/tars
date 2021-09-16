@@ -1,6 +1,7 @@
-from pandas import DataFrame
 from abc import ABC, abstractmethod
 import copy
+
+from pandas import DataFrame
 
 
 class AbstractPortfolio(ABC):

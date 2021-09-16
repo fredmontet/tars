@@ -1,9 +1,9 @@
 import pandas as pd
 from ta.trend import MACD
 
-from src.tars.tars import TraderEvaluator
-from src.tars.tars import AbstractStrategy
-from src.tars.tars import CryptoMarket
+from .abstract_strategy import AbstractStrategy
+from ..evaluators import TraderEvaluator
+from ..markets import CryptoMarket
 
 
 class TrendFollowingMACD(AbstractStrategy):

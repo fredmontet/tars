@@ -1,9 +1,9 @@
 import pandas as pd
 from scipy.signal import savgol_filter
 
-from src.tars.tars import TraderEvaluator
-from src.tars.tars import AbstractStrategy
-from src.tars.tars import CryptoMarket
+from ..evaluators import TraderEvaluator
+from .abstract_strategy import AbstractStrategy
+from ..markets import CryptoMarket
 
 
 class TrendFollowing(AbstractStrategy):

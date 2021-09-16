@@ -6,7 +6,7 @@ import logging
 import pandas as pd
 from pandas import DataFrame
 
-from utils.runner import Runner
+from .utils.runner import Runner
 
 
 class Tars:
