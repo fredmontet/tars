@@ -39,6 +39,10 @@ clean:
 lint:
 	flake8 src
 
+## Update version
+update_version:
+	bump2version --current-version $(version) $(type) setup.py
+
 ## Build
 build:
 	$(PYTHON_INTERPRETER) setup.py sdist bdist_wheel
