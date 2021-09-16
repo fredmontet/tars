@@ -10,7 +10,7 @@ setup(
     name='tars',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
-    version='0.3.3',
+    version='0.4.0',
     description='A cryptocurrency trading bot for research',
     author='Fred Montet',
     license='MIT',

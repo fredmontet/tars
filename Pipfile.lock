@@ -960,11 +960,11 @@
         },
         "tars": {
             "hashes": [
-                "sha256:6481cd505f2a5be3cce6f4d03cbf59a6548c8b490b8fffff71e422675476387b",
-                "sha256:ac96ee11d732a91665c6c157fcb03d637928ff8ccbe8ae5276a2444ec48d4642"
+                "sha256:39f51d33d591b2cad5e8904c1309fc54fc60592f5535e8aaa1915d22bce83d60",
+                "sha256:9053e661909a08ec0312093d3c3ab3894caccae1147d68e121f1c2449aefbb4a"
             ],
             "index": "pypi",
-            "version": "==0.3.3"
+            "version": "==0.4.0"
         },
         "tensorboard": {
             "hashes": [
