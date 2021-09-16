@@ -10,8 +10,8 @@ setup(
     name='tars',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
-    version='0.4.0',
-    description='A cryptocurrency trading bot for research',
+    version='0.4.1',
+    description='A crypto trading bot for research and developers',
     author='Fred Montet',
     license='MIT',
     install_requires=[

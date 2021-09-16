@@ -9,7 +9,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-tars = "*"
+tars = {path = ".", editable = true}
 
 [dev-packages]
 jupyterlab = "*"
