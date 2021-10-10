@@ -29,7 +29,7 @@ class AbstractMarket(ABC):
 
     @abstractmethod
     def get_order_book(self, *args, **kwargs):
-        """ Get all latest orders in the Matket for a trade """
+        """ Get all latest orders in the Market for a trade """
         pass
 
     @abstractmethod
