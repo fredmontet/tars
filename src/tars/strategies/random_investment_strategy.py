@@ -1,5 +1,6 @@
 import random
-import pandas as pd
+
+from pandas import DataFrame, Timestamp
 
 from .abstract_strategy import AbstractStrategy
 from ..evaluators import TraderEvaluator
@@ -33,9 +34,12 @@ class RandomInvestment(AbstractStrategy):
         """ Run the strategy """
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
-        self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
+        self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
         # Run strategy
         type = ['buy', 'sell'][random.getrandbits(1)]
         self.trader.add_order(pair=self.pair, type=type,
                               ordertype='market', volume=self.volume,
                               validate=self.validate)
+
+    def test(self, data: DataFrame):
+        raise NotImplementedError

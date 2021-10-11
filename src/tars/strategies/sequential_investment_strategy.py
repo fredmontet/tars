@@ -1,6 +1,6 @@
 import time
 
-import pandas as pd
+from pandas import DataFrame, Timestamp
 
 from .abstract_strategy import AbstractStrategy
 from ..evaluators import TraderEvaluator
@@ -48,7 +48,7 @@ class SequentialInvestment(AbstractStrategy):
         """ Run the strategy """
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
-        self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
+        self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
         # Run strategy
         if self.has_run == False:
             step_volume = self.volume / self.n_step
@@ -60,3 +60,6 @@ class SequentialInvestment(AbstractStrategy):
                 self.current_step += 1
                 time.sleep(step_duration.total_seconds())
             self.has_run = True
+
+    def test(self, data: DataFrame):
+        raise NotImplementedError

@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from pandas import DataFrame
+
 
 class AbstractStrategy(ABC):
     """
@@ -9,4 +11,8 @@ class AbstractStrategy(ABC):
         
     @abstractmethod
     def run(self):
+        pass
+
+    @abstractmethod
+    def test(self, data: DataFrame):
         pass

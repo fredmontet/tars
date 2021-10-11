@@ -1,4 +1,5 @@
-import pandas as pd
+from pandas import DataFrame, Timestamp
+
 from darts import TimeSeries
 from darts.models import ExponentialSmoothing
 
@@ -39,7 +40,7 @@ class PredictionStrategy(AbstractStrategy):
         """ Run the strategy """
         # 1. Add a checkpoint to the evaluator
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD
-        self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
+        self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
 
         # 2. Process the data
         market = CryptoMarket()
@@ -70,3 +71,6 @@ class PredictionStrategy(AbstractStrategy):
                                   validate=self.validate)
         else:
             pass
+
+    def test(self, data: DataFrame):
+        raise NotImplementedError

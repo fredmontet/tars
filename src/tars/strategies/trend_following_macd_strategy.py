@@ -1,4 +1,6 @@
-import pandas as pd
+
+from pandas import DataFrame, Timestamp
+
 from ta.trend import MACD
 
 from .abstract_strategy import AbstractStrategy
@@ -40,7 +42,7 @@ class TrendFollowingMACD(AbstractStrategy):
         """ Run the strategy """
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
-        self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
+        self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
 
         # Run strategy
 

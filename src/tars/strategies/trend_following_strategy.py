@@ -1,4 +1,6 @@
-import pandas as pd
+
+from pandas import DataFrame, Timestamp
+
 from scipy.signal import savgol_filter
 
 from ..evaluators import TraderEvaluator
@@ -42,7 +44,7 @@ class TrendFollowing(AbstractStrategy):
         """ Run the strategy """
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
-        self.evaluator.add_checkpoint(pd.Timestamp.utcnow(), balance)
+        self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
 
         # Run strategy
 
@@ -57,7 +59,7 @@ class TrendFollowing(AbstractStrategy):
         df0 = market.get_ohlc_data(pair=self.pair)[0]['close'].iloc[::-1]
         df1 = df0.diff(n).diff(n).rolling(r).mean()
         arr = savgol_filter(df1.to_numpy(), w, o)
-        df2 = pd.DataFrame(arr).set_index(df1.index)
+        df2 = DataFrame(arr).set_index(df1.index)
 
         ## set thresholds
         dx = df2.iloc[-1][0]
