@@ -3,6 +3,7 @@ from collections import namedtuple
 import logging
 import uuid
 from typing import NoReturn, Tuple
+from datetime import datetime
 
 import pandas as pd
 from pandas import DataFrame
@@ -11,11 +12,12 @@ from .abstract_trader import AbstractTrader
 from ..markets import CryptoMarket
 
 
-HistoricalOrder = namedtuple('VirtualOrder', ['dtime', 'pair', 'ordertype', 'type',
-                                           'price', 'cost', 'fee', 'volume'])
+VirtualOrder = namedtuple('VirtualOrder', ['dtime', 'pair', 'ordertype',
+                                              'type', 'price', 'cost', 'fee',
+                                              'volume'])
 
 
-class HistoricalCryptoTrader(AbstractTrader):
+class HistoricalTrader(AbstractTrader):
     """
     VirtualCryptoTrader is a paper trader of cryptocurrencies. It allows to try
     things without real financial risks.
@@ -26,16 +28,19 @@ class HistoricalCryptoTrader(AbstractTrader):
     :ivar order_book: dict
         The book of all virtual orders made by the trader
     """
-    def __init__(self, portfolio):
+    def __init__(self, portfolio, market):
         self.portfolio = portfolio
+        self.market = market
         self.order_book = {}
 
-    def add_order(self, pair: str, type: str, ordertype: str, volume: float, validate) \
+    def add_order(self, dtime: datetime, pair: str, type: str, ordertype: str, volume: float, validate: bool) \
             -> VirtualOrder:
         """ Add a virtual standard order.
 
         Add a virtual standard order and returns it.
 
+        :param dtime: Datetime
+            Datetime
         :param pair: str
             Asset pair
         :param type: str
@@ -66,19 +71,16 @@ class HistoricalCryptoTrader(AbstractTrader):
         :return new_order: VirtualOrder
         """
 
-        market = CryptoMarket()
-
         # 1. Caculate order informations
-        dtime = pd.Timestamp.utcnow()
-        price = float(market.get_ticker_information(pair)['c'][0][0])
+        price = float(self.market.get_ticker_information(pair)['c'][0][0])
         sleep(1)
-        fee_in_percent = market.get_tradable_asset_pairs(info='fees').loc[pair]['fees'][0][1] / 100
+        fee_in_percent = self.market.get_tradable_asset_pairs(info='fees').loc[pair]['fees'][0][1] / 100
         sleep(1)
         cost = volume * price
         fee = cost * fee_in_percent
         
         # 2. Update the portfolio
-        base, quote = market.get_tradable_asset_pairs(pair=pair)[['base', 'quote']].iloc[0]
+        base, quote = self.market.get_tradable_asset_pairs(pair=pair)[['base', 'quote']].iloc[0]
 
         if type == 'buy':
             try: 

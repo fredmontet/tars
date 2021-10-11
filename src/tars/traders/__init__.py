@@ -1,2 +1,3 @@
 from .crypto_trader import CryptoTrader
+from .historical_trader import HistoricalTrader
 from .virtual_crypto_trader import VirtualCryptoTrader
