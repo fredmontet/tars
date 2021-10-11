@@ -6,7 +6,7 @@ import logging
 import pandas as pd
 from pandas import DataFrame
 
-from .utils.runner import Runner
+from .runners import TemporalRunner, HistoricalRunner
 
 
 class Tars:
@@ -44,13 +44,45 @@ class Tars:
         logging.info(f'{self._tars} : Welcome to Endurance! 👨‍🚀')
 
     def load(self, strategy) -> NoReturn:
-        """ Load a strategy to execute """
+        """ Load a strategy to execute
+
+        :param strategy: Strategy
+            The strategy to load
+        """
         self.strategies.append(strategy)
         logging.info(f'{self._tars} : Loaded strategy ➡️ {strategy.name}')
 
-    def start(self, frequency, duration=None) -> NoReturn:
+    def test(self, data: DataFrame) -> NoReturn:
+        """ Start a test session on historical data
+
+        :param data: pd.DataFrame
+            The data on which the backtesting session will be performed
         """
-        Start a trading session
+        if self.strategies:
+            logging.info(f"{self._tars} : Starting backtesting session 📈")
+            logging.info(f"💪️ Loading :   ")
+
+            threads = []
+            # Test all strategies in their own threads
+            for i, s in enumerate(self.strategies):
+                runner = HistoricalRunner()
+                self.runners.append(runner)
+                thread = Thread(target=runner.start,
+                                args=(s.test, data))
+                logging.info(f"  🧵 '{thread.name}' ➡️ '{s.name}'")
+                thread.start()
+                threads.append(thread)
+                self.is_running = True
+
+            # Wait until completion of all the threads
+            for t in threads:
+                t.join()
+                self.is_running = False
+        else:
+            raise Exception('There are no loaded strategies')
+
+    def start(self, frequency: str, duration: str = None) -> NoReturn:
+        """ Start a trading session
 
         :param frequency: str
             Frequency in the same form than a Pandas' Timedelta
@@ -64,12 +96,12 @@ class Tars:
                 logging.info(f"⏳ for a duration of : {duration} (hh:mm:ss)")
             logging.info(f"💪️ Loading :   ")
             for i, s in enumerate(self.strategies):
-                runner = Runner()
+                runner = TemporalRunner()
                 self.runners.append(runner)
                 thread = Thread(target=runner.start,
                                 args=(s.run, frequency, duration))
-                thread.start()
                 logging.info(f"  🧵 '{thread.name}' ➡️ '{s.name}'")
+                thread.start()
             self.is_running = True
         else:
             raise Exception('There are no loaded strategies')

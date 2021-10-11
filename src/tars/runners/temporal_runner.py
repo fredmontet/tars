@@ -1,13 +1,16 @@
+
 import logging
 from typing import Callable, NoReturn
 from time import sleep
 
 from pandas import Timestamp, Timedelta
 
+from .abstract_runner import AbstractRunner
 
-class Runner:
+
+class TemporalRunner(AbstractRunner):
     """
-    A Runner represent an object able to execute a function through time.
+    A TemporalRunner represent an object able to execute a function through time.
 
     The function can be executed with a chosen frequency e.g. every 10 seconds
     and for a optional duration e.g. 2 hours.
