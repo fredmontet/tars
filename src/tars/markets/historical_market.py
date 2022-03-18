@@ -4,6 +4,7 @@ from pandas import DataFrame, Timestamp
 import numpy as np
 
 from .abstract_market import AbstractMarket
+from .crypto_market import CryptoMarket
 
 
 class HistoricalMarket(AbstractMarket):
@@ -28,11 +29,24 @@ class HistoricalMarket(AbstractMarket):
         """ Get information about a specific asset """
         raise NotImplementedError
 
-    def get_tradable_asset_pairs(self, *args, **kwargs):
-        """ Get information about a pair like USDBTC """
-        raise NotImplementedError
+    def get_tradable_asset_pairs(self, info: str = None, pair: str = None) \
+            -> DataFrame:
+        """Get tradable asset pairs.
 
-    def get_ticker_information(self, pair: str, timestamp: Timestamp):
+        Return a ``DataFrame`` of pair names and their info.
+
+        :param info: str, optional (default=None)
+            Info to retrieve. Can be one of {'leverage', 'fees', 'margin'}.
+            If None (default), retrieve all info.
+        :param pair: str, optional (default=None)
+            Comma delimited list of asset pairs to get info on. If None
+            (default), all.
+
+        :return pairs: DataFrame
+        """
+        return CryptoMarket().get_tradable_asset_pairs(info, pair)
+
+    def get_ticker_information(self, timestamp: Timestamp, pair: str):
         """ Get the latest ticker information about a pair """
         tick = self.data[pair].loc[timestamp]
         tick = tick.rename(index={

@@ -64,3 +64,6 @@ class TrendFollowingMACD(AbstractStrategy):
                                   validate=self.validate)
         else:
             pass
+
+    def test(self, dtime: Timestamp, data: DataFrame):
+        raise NotImplementedError

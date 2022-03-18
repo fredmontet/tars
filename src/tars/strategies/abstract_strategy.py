@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from pandas import DataFrame
+from pandas import DataFrame, Timestamp
 
 
 class AbstractStrategy(ABC):
@@ -14,5 +14,5 @@ class AbstractStrategy(ABC):
         pass
 
     @abstractmethod
-    def test(self, data: DataFrame):
+    def test(self, dtime: Timestamp, data: DataFrame):
         pass

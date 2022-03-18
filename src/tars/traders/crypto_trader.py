@@ -22,10 +22,11 @@ class CryptoTrader(AbstractTrader):
     :ivar portfolio: AbstractPortfolio object
     """
     
-    def __init__(self, portfolio, api_key=None):
+    def __init__(self, market, portfolio, api_key=None):
         api = krakenex.API()
         api.load_key(api_key)
         self.api = KrakenAPI(api)
+        self.market = market
         self.portfolio = portfolio
         
     def add_order(self, pair: str, type: str, ordertype: str, volume: str,

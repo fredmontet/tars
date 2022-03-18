@@ -34,7 +34,6 @@ class PredictionStrategy(AbstractStrategy):
         self.volume = volume
         self.validate = validate
         self.evaluator = TraderEvaluator(self.trader)
-        self.market = CryptoMarket()
 
     def run(self):
         """ Run the strategy """
@@ -42,11 +41,9 @@ class PredictionStrategy(AbstractStrategy):
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD
         self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
 
-        # 2. Process the data
-        market = CryptoMarket()
-
         # get last frame
-        df = market.get_ohlc_data(pair=self.pair, ascending=True, interval=15)[0]
+        df = self.trader.market.get_ohlc_data(pair=self.pair, ascending=True,
+                                              interval=15)[0]
 
         # preprocessing
         ts = TimeSeries.from_dataframe(df.reset_index(), 'dtime', 'close')

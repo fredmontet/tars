@@ -8,7 +8,6 @@ import pandas as pd
 from pandas import DataFrame
 
 from .abstract_trader import AbstractTrader
-from ..markets import CryptoMarket
 
 
 VirtualOrder = namedtuple('VirtualOrder', ['dtime', 'pair', 'ordertype', 'type',
@@ -26,11 +25,13 @@ class VirtualCryptoTrader(AbstractTrader):
     :ivar order_book: dict
         The book of all virtual orders made by the trader
     """
-    def __init__(self, portfolio):
+    def __init__(self, market, portfolio):
+        self.market = market
         self.portfolio = portfolio
         self.order_book = {}
 
-    def add_order(self, pair: str, type: str, ordertype: str, volume: float, validate) \
+    def add_order(self, pair: str, type: str, ordertype: str, volume: float,
+                  validate: bool = True) \
             -> VirtualOrder:
         """ Add a virtual standard order.
 
@@ -65,20 +66,17 @@ class VirtualCryptoTrader(AbstractTrader):
 
         :return new_order: VirtualOrder
         """
-
-        market = CryptoMarket()
-
         # 1. Caculate order informations
         dtime = pd.Timestamp.utcnow()
-        price = float(market.get_ticker_information(pair)['c'][0][0])
+        price = float(self.market.get_ticker_information(pair)['c'][0][0])
         sleep(1)
-        fee_in_percent = market.get_tradable_asset_pairs(info='fees').loc[pair]['fees'][0][1] / 100
+        fee_in_percent = self.market.get_tradable_asset_pairs(info='fees').loc[pair]['fees'][0][1] / 100
         sleep(1)
         cost = volume * price
         fee = cost * fee_in_percent
         
         # 2. Update the portfolio
-        base, quote = market.get_tradable_asset_pairs(pair=pair)[['base', 'quote']].iloc[0]
+        base, quote = self.market.get_tradable_asset_pairs(pair=pair)[['base', 'quote']].iloc[0]
 
         if type == 'buy':
             try: 
@@ -129,8 +127,7 @@ class VirtualCryptoTrader(AbstractTrader):
         """
         # 1. Update the portfolio
         order = self.order_book[order_id]
-        market = CryptoMarket()
-        base, quote = market.get_tradable_asset_pairs(pair=order.pair)[['base', 'quote']].iloc[0]
+        base, quote = self.market.get_tradable_asset_pairs(pair=order.pair)[['base', 'quote']].iloc[0]
 
         if order.type == 'buy':
             self.portfolio.deposit(quote, order.cost) # + USD
@@ -163,6 +160,6 @@ class VirtualCryptoTrader(AbstractTrader):
 
         :return fees: float
         """
-        fees = sum([v.fee for k,v in self.order_book.items()])
+        fees = sum([v.fee for k, v in self.order_book.items()])
         return round(fees, 2)
 

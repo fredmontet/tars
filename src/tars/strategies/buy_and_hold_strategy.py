@@ -4,6 +4,8 @@ from pandas import DataFrame, Timestamp
 
 from .abstract_strategy import AbstractStrategy
 from ..evaluators import TraderEvaluator
+import logging
+
 
 
 class BuyAndHold(AbstractStrategy):
@@ -40,6 +42,7 @@ class BuyAndHold(AbstractStrategy):
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
         self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
+
         # Run strategy
         if not self.has_run:
             self.trader.add_order(pair=self.pair, type='buy',
@@ -47,5 +50,15 @@ class BuyAndHold(AbstractStrategy):
                                   validate=self.validate)
             self.has_run = True
 
-    def test(self, data: DataFrame):
-        raise NotImplementedError
+    def test(self, dtime: Timestamp, data: DataFrame):
+        """ Test the strategy """
+        # Checkpoint
+        balance = self.trader.portfolio.get_trade_balance(dtime).loc['eb'].ZUSD
+        self.evaluator.add_checkpoint(dtime, balance)
+
+        # Run strategy
+        if not self.has_run:
+            self.trader.add_order(dtime=dtime, pair=self.pair, type='buy',
+                                  ordertype='market', volume=self.volume,
+                                  validate=self.validate)
+            self.has_run = True
