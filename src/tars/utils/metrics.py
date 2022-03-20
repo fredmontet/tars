@@ -4,6 +4,19 @@ Some metrics taken from :
 """
 
 
+def cumulative_return(current_price: float, original_price: float):
+    """ Cumulative Return
+
+    .. math::
+        (Current Price - Original Price) / Original Price
+
+    :param current_price: float of the current price
+    :param original_price: float of the original price
+    :return: float of the cumulative return
+    """
+    return (current_price-original_price) / original_price
+
+
 def total_net_profit(gross_profit: float, gross_loss: float) -> float:
     """ Total net profit
 

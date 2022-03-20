@@ -1,5 +1,6 @@
 pandas
 click
+ipywidgets
 requests
 pykrakenapi
 krakenex
@@ -7,6 +8,7 @@ matplotlib
 prophet
 torch
 darts
+tqdm
 holidays
 seaborn
 scipy

@@ -35,11 +35,21 @@ class RandomInvestment(AbstractStrategy):
         # Checkpoint
         balance = self.trader.portfolio.get_trade_balance().loc['eb'].ZUSD   
         self.evaluator.add_checkpoint(Timestamp.utcnow(), balance)
+
         # Run strategy
         type = ['buy', 'sell'][random.getrandbits(1)]
         self.trader.add_order(pair=self.pair, type=type,
                               ordertype='market', volume=self.volume,
                               validate=self.validate)
 
-    def test(self, data: DataFrame):
-        raise NotImplementedError
+    def test(self, dtime: Timestamp, data: DataFrame):
+        """ Test the strategy """
+        # Checkpoint
+        balance = self.trader.portfolio.get_trade_balance(dtime).loc['eb'].ZUSD
+        self.evaluator.add_checkpoint(dtime, balance)
+
+        # Run strategy
+        type = ['buy', 'sell'][random.getrandbits(1)]
+        self.trader.add_order(dtime=dtime, pair=self.pair, type=type,
+                              ordertype='market', volume=self.volume,
+                              validate=self.validate)

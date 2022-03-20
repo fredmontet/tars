@@ -1,6 +1,6 @@
 import time
 
-from pandas import DataFrame, Timestamp
+from pandas import DataFrame, Timestamp, Timedelta
 
 from .abstract_strategy import AbstractStrategy
 from ..evaluators import TraderEvaluator
@@ -32,13 +32,13 @@ class SequentialInvestment(AbstractStrategy):
         Evaluator allows for the evaluation of a strategy
     """
     
-    def __init__(self, trader, pair, volume, n_step, duration, validate=True):
+    def __init__(self, trader, pair, volume, n_step, duration=None, validate=True):
         self.name = 'Sequential Investment'
         self.trader = trader
         self.pair = pair
         self.volume = volume
         self.n_step = n_step
-        self.duration = pd.Timedelta(duration)
+        self.duration = Timedelta(duration)
         self.validate = validate
         self.current_step = 0
         self.has_run = False
@@ -61,5 +61,19 @@ class SequentialInvestment(AbstractStrategy):
                 time.sleep(step_duration.total_seconds())
             self.has_run = True
 
-    def test(self, data: DataFrame):
-        raise NotImplementedError
+    def test(self, dtime: Timestamp, data: DataFrame):
+        """ Test the strategy """
+        # Checkpoint
+        balance = self.trader.portfolio.get_trade_balance(dtime).loc['eb'].ZUSD
+        self.evaluator.add_checkpoint(dtime, balance)
+
+        # Run strategy
+        if self.has_run == False:
+            step_volume = self.volume / self.n_step
+            step_duration = self.duration / self.n_step
+            for step in range(self.n_step):
+                self.trader.add_order(dtime=dtime, pair=self.pair, type='buy',
+                                      ordertype='market', volume=step_volume,
+                                      validate=self.validate)
+                self.current_step += 1
+            self.has_run = True
