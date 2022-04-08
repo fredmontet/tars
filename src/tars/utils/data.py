@@ -5,9 +5,14 @@ from pandas import DataFrame
 def download_historical_data():
     """ Explanation about the download procedure of historical data """
     print("""To download historical data (updated every quarter) : \n
-        1. go on https://drive.google.com/drive/folders/1sqt3kvw_Y5yOfF6HLG_xfAXae0LsVZWH\n
+        1. go on https://drive.google.com/drive/folders/1aoA6SKgPbS_p3pYStXUXFvmjqShJ2jv9\n 
         2. download one of the separate zip file \n
-        3. put the file in the `data/raw/` folder.""")
+        3. put the file in the `data/raw/` folder.\n\n
+        
+        The data from above comes from Kraken and can be found at this link :\n 
+        https://support.kraken.com/hc/en-us/articles/360047124832-Downloadable-historical-OHLCVT-Open-High-Low-Close-Volume-Trades-data
+        
+        """)
 
 
 def get_historical_ohlc_data(base: str, quote: str, interval: int = 5, start: str = None, end: str = None,
